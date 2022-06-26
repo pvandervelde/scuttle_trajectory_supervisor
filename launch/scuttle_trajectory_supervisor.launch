@@ -1,0 +1,32 @@
+<launch>
+    <!--
+        Indicates if ROS is running on a physical SCUTTLE (value = true) or a virtual one
+        (value = false), e.g. when running in Gazebo.
+    -->
+    <arg name="is_physical" default="true"/>
+
+    <arg name="cmd_vel_topic" default="/cmd_vel" />
+    <arg name="cmd_vel_approved_topic" default="/cmd_vel_approved" />
+    <arg name="odom_topic" default="odom" />
+
+    <!--
+        Start the supervisor node
+
+    -->
+    <node
+        name="trajectory_supervisor"
+        ns="scuttle/trajectory"
+        pkg="scuttle_trajectory_supervisor"
+        respawn="true"
+        type="trajectory_supervisor.py">
+        <param name="robot_frame_id" value="base_link" />
+
+        <!-- Remap the subscribing topics -->
+        <remap from="/scuttle/sensor/bumper/events" to="events" />
+        <remap from="cmd_vel" to="$(arg cmd_vel_topic)"/>
+        <remap from="odom" to="$(arg odom_topic)"/>
+
+        <!-- Remap the publishing topics -->
+        <remap from="cmd_vel_approved" to="$(arg cmd_vel_approved_topic)"/>
+    </node>
+</launch>
