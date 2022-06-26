@@ -282,9 +282,9 @@ class ScuttleTrajectorySupervisor(object):
 
         # Create the state machine
         self.states = [
-            ScuttleStoppedState(self),
-            ScuttleMovingState(self, self.publish_move_command),
-            ScuttleReversingState(self, self.publish_move_command)
+            ScuttleStoppedState(),
+            ScuttleMovingState(self.publish_move_command),
+            ScuttleReversingState(self.publish_move_command)
         ]
 
         self.machine = StateMachine()
