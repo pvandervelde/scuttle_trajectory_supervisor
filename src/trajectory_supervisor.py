@@ -123,24 +123,24 @@ class ScuttleReversingState(State):
         self.tf_listener = TransformListener(self.tf_buffer)
 
         # Store the default message fields
-        self.is_bigendian = sys.byteorder == 'big'
-        self.fields = [
-                PointField(
-                    name='x',
-                    offset=0,
-                    datatype=PointField.Float32,
-                    count=1),
-                PointField(
-                    name='y',
-                    offset=4,
-                    datatype=PointField.Float32,
-                    count=1),
-                PointField(
-                    name='z',
-                    offset=8,
-                    datatype=PointField.Float32,
-                    count=1)
-            ]
+        # self.is_bigendian = sys.byteorder == 'big'
+        # self.fields = [
+        #         PointField(
+        #             name='x',
+        #             offset=0,
+        #             datatype=PointField.Float32,
+        #             count=1),
+        #         PointField(
+        #             name='y',
+        #             offset=4,
+        #             datatype=PointField.Float32,
+        #             count=1),
+        #         PointField(
+        #             name='z',
+        #             offset=8,
+        #             datatype=PointField.Float32,
+        #             count=1)
+        #     ]
 
     @property
     def name(self):
