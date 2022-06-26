@@ -87,7 +87,7 @@ class ScuttleStoppedState(State):
 class ScuttleMovingState(State):
     state_name = 'moving'
 
-    def __init__(self, publish_velocity: Callable[[Twist]]):
+    def __init__(self, publish_velocity: Callable[[Twist], None]):
         self.publish_velocity = publish_velocity
 
     @property
@@ -114,7 +114,7 @@ class ScuttleMovingState(State):
 class ScuttleReversingState(State):
     state_name = 'reversing'
 
-    def __init__(self, publish_velocity: Callable[[Twist]]):
+    def __init__(self, publish_velocity: Callable[[Twist], None]):
         self.publish_velocity = publish_velocity
 
         self.frame_id = rospy.get_param('~robot_frame_id')
