@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 # Python
 from __future__ import annotations
 
